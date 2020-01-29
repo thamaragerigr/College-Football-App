@@ -2,7 +2,7 @@
   <div class="home">
     <!--Header-->
     <header class="mt-12">
-      <i class="fas fa-football-ball" style="color:white; font-size:170px;transform: rotate(45deg);"></i>
+      <i class="fas fa-football-ball" style="color:white; font-size:150px;transform: rotate(45deg);"></i>
       <h1 class="text-white uppercase text-6xl font-extrabold">College Football</h1>
       <p class="text-white text-base">Find information about your favorite Football teams!</p>
     </header>

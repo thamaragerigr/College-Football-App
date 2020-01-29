@@ -1,11 +1,10 @@
 <template>
   <div class="hello">
     <div class="justify-center flex wx-30 mt-8">
-      <input class="rounded-full p-4 w-2/5" v-model="search" type="text" placeholder="Search..." />
+      <input class="bg-gray-200 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300 rounded-full py-2 px-4 w-2/5" v-model="search" type="text" placeholder="Search..." />
       <button
         class="bg-grey-500 rounded w-auto flex justify-end items-center p-2 hover:text-blue-light"
       >
-        <i class="fas fa-search text-red-500"></i>
       </button>
     </div>
 
@@ -21,16 +20,16 @@
           </button>
 
           <img
-            class="h-16 w-16 rounded-full mx-auto"
-            :src=" team.logos ? team.logos[0] : 'assets/undefined.png'"
+            class="h-32 w-32 rounded-full mx-auto"
+            :src=" team.logos ? team.logos[0] : 'https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'"
           />
 
-          <h4 class="font-bold text-grey-700 text-lg mb-2">{{ team.school }}</h4>
+          <h4 class="font-bold text-grey-700 text-lg mt-4 leading-none">{{ team.school }}</h4>
           <h4 class="font-bold text-grey-700 text-lg mb-2">{{ team.abbreviation }}</h4>
           <p class="text-gray-700 text-base">Mascota: {{ team.mascot }}</p>
           <p>Color: {{ team.color }}</p>
 
-          <button @click="singleTeam(team.school)">View</button>
+          <button class="bg-gray-300 hover:bg-gray-400 px-2  m-4 rounded" @click="singleTeam(team.school)">View</button>
         </div>
       </div>
     </div>
