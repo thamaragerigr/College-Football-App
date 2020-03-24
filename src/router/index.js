@@ -13,23 +13,19 @@ const routes = [
   {
     path: '/favorites',
     name: 'favorites',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Favorites.vue')
+    component: () => import('../views/Favorites.vue')
   },
   {
-    path: '/view',
+    path: '/team/:id',
     name: 'IndividualView',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/IndividualView')
+    props: true,
+    component: () => import('../components/IndividualView.vue')
   }
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 export default router

@@ -2,18 +2,19 @@
   <div id="app">
    <div id="menu">
     <ul class="flex justify-center">
-      <li class="">
+      <router-link to="/"><li>
         <a
-          class="text-center block font-black py-5 px-5  hover:border text-white"
+          class="text-center block font-black py-5 px-5  hover:underline text-white"
           href="#"
-        ><router-link to="/">Home</router-link></a>
+        >Home</a>
       </li>
-      <li class="">
+         </router-link>
+      <router-link to="/favorites"><li>
         <a
-          class="text-center block font-black py-5 px-5  hover:border text-white"
+          class="text-center block font-black py-5 px-5   hover:underline text-white"
           href="#"
-        ><router-link to="/favorites">Favorites</router-link></a>
-      </li>
+        >Favorites</a>
+      </li></router-link>
     </ul>
   </div>
     <router-view/>
