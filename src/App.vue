@@ -42,4 +42,19 @@ body{
 input, button {
   outline:0;
 }
+img {
+  color: rgb(196, 192, 192);
+  text-align: center;
+  height: auto;
+  display: block;
+  position: relative;
+  font-size: 11px;
+}
+
+img:before {
+  content: "We're sorry, the image below is broken ";
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 75px;
+}
 </style>

@@ -18,14 +18,14 @@
         v-for="team in filteredTeams"
         v-bind:key="team.school"
       >
-        <div class="px-2 py-2 favorite" @click="toggleFavorite" :class="{ active : favorite }">
-          <button class="hover:text-red-600 text-red-400 px-2 my-3 ml-16 absolute">
-            <i class="fas fa-heart text-lg"></i>
+        <div class="px-2 py-2 favorite">
+          <button class="hover:text-red-600 text-red-400 px-2 my-3 ml-16 absolute" :class="{ favorite : team.active }">
+            <i class="fas fa-heart text-lg"  @click="toggleFavorite(this.team)"></i>
           </button>
 
           <img
             class="h-32 w-32 mx-auto"
-            :src=" team.logos ? team.logos[0] : '../assets/not-found.png'"  @error="imageLoadOnError"
+            :src=" team.logos ? team.logos[0] : '../assets/not-found.png'" alt="Team Logo"
 
           />
 
@@ -39,7 +39,7 @@
           </div>
           <button
             class="bg-gray-300 hover:bg-gray-400 px-2 m-4 rounded"
-            @click="singleTeam(team.id)"
+            @click="singleTeam(team.id, team)"
           >View</button>
         </div>
       </div>
@@ -72,23 +72,26 @@ export default {
       })
   },
   methods: {
-    singleTeam (id) {
-      this.$router.push('/team/' + id)
-      console.log(this.team)
+    singleTeam (id, team) {
+      this.$router.push('/team/' + id + team)
+      console.log(team)
     },
-    async toggleFavorite () {
-      this.favorite = !this.favorite
+    async toggleFavorite (event) {
+      let team = this.teams[event]
+      team.active = !team.active
+      if (this.favorite) {
+        console.log('favorite!')
+      } else {
+        console.log('!favorite')
+      }
 
       // make some call to your databse to update the value
-    },
-    imageLoadOnError () {
-      this.team.logos[0] = '../assets/not-found.png'
     }
   },
   computed: {
     filteredTeams: function () {
       return this.teams.filter(team => {
-        return team.school.match(this.search)
+        return team.school.toLowerCase().match(this.search.toLowerCase())
       })
     }
   }
@@ -99,5 +102,9 @@ export default {
 <style scoped>
 h4 {
   margin-bottom: 5%;
+}
+
+.active{
+  color: blue;
 }
 </style>

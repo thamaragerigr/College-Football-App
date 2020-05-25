@@ -7,20 +7,13 @@
         <div class="mb-8 justify-center">
          <img
             class="h-32 w-32 mx-auto"
-            src="../assets/not-found.png"
+            src=""
           />
-          <div class="text-gray-900 font-bold text-xl mb-2 mt-4">{{ singleTeam }}</div>
-          <p class="text-gray-700 text-base">
-          Mascot: { team.mascot } <br>
-          Abbreviation: { team.mascot } <br>
-          Alternative Names: { team.alt_name } <br>
-          Conference: { team.conference } <br>
-          Division: { team.division } <br>
-          </p>
+          <div class="text-gray-900 font-bold text-xl mb-2 mt-4">{{ id }}</div>
         </div>
         <div class="flex items-center justify-center -mt-8">
          <div class="text-sm ">
-            <p class="text-gray-900 leading-none mr-2">Colors</p>
+            <p class="text-gray-900 leading-none mr-2"></p>
           </div>
         </div>
       </div>
@@ -31,20 +24,19 @@
 <script>
 import axios from 'axios'
 export default {
-  props: ['id'],
+
   data () {
     return {
+      id: this.$route.params.id,
       singleTeam: ''
     }
   },
-  mounted () {
+  created () {
     axios
-      .get('https://api.collegefootballdata.com/teams')
-      .then(response => {
-        this.singleTeam = response.data
-      })
-      .catch(error => {
-        console.log(error)
+      .get('https://api.collegefootballdata.com/teams/')
+      .then(function (data) {
+        console.log(data)
+        this.singleTeam = data.body
       })
   }
 }
